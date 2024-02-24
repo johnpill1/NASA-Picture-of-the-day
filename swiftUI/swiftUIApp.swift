@@ -11,7 +11,7 @@ import SwiftUI
 struct swiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(result: APODImage(copyright: "Copyright", date: "Today's date", explanation: "Explanation", hdurl: "HD URL", media_type: "Media Type", service_version: "Version", title: "Title", url: "URL"))
+            ContentView(result: APODImage(date: "Today's date", explanation: "Explanation", hdurl: "HD URL", media_type: "Media Type", service_version: "Version", title: "Title", url: "URL"))
         }
     }
 }
