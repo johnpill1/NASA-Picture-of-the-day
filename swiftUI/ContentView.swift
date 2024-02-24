@@ -31,7 +31,7 @@ struct ContentView: View {
                 
                 HStack{
                     Text("Date: \(result.date).")
-                    Text("By: \(result.copyright)")
+                   // Text("By: \(result.copyright)")
                 }
                 .font(.caption)
                 .bold()
@@ -45,13 +45,18 @@ struct ContentView: View {
             .task { loadData() }
             .alert("Something wen't wrong :(", isPresented: $showingAlert) {
                         Button("OK", role: .cancel) { }
-                    }
+        }
     }
     
     
     
+    
+    
+    
+    // FUNCTION TO FETCH DATA FROM THE INTERNET.
+    
     // Demo API key = https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
-    // Only allowed 30 attempts an hour / 50 a day.
+    // Only allowed 30 attempts an hour / 50 a day - to to the website and sign up for a free KEY.
     
     func loadData() {
         
@@ -69,6 +74,7 @@ struct ContentView: View {
                 print("Invalid Data")
                 return
             }
+            print("Data: \(String(describing: data))")
             
             // 4 Check if there are any errors.
             if let error = error {
@@ -80,7 +86,7 @@ struct ContentView: View {
             
             // 6 Try and decode the data from JSON and Map to the APODImage struct.
             let decodedData = try? decoder.decode(APODImage.self, from: data!)
-            
+            print("Decoded Data: \(String(describing: decodedData))")
             // 7 Check if the data has decoded properly. I am triggering an alert if it fails.
             guard decodedData != nil else {
                 showingAlert = true
@@ -99,7 +105,7 @@ struct ContentView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(result: APODImage(copyright: "Copyright", date: "Today's date", explanation: "Explanation", hdurl: "HD URL", media_type: "Media Type", service_version: "Version", title: "Title", url: "URL"))
+        ContentView(result: APODImage(date: "Today's date", explanation: "Explanation", hdurl: "HD URL", media_type: "Media Type", service_version: "Version", title: "Title", url: "URL"))
     }
 }
 
