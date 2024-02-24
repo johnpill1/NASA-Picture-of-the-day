@@ -5,11 +5,12 @@
 //  Created by John Pill on 12/12/2022.
 //
 
+//
+
 import Foundation
 
 
 struct APODImage: Codable {
-    let copyright: String
     let date: String
     let explanation: String
     let hdurl: String
